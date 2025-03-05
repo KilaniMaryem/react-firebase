@@ -4,7 +4,8 @@
     align-items: center;
     min-height: 100vh;
     background-color: #f8f9fa;
-    position: relative;
+    position: relative; 
+    border-radius: 10px;
   }
   
   .auth-buttons {
@@ -15,15 +16,14 @@
   
   .mailDiv {
     width: 300px;
-    
   }
   
   .logout-btn {
-    position: absolute;
+    border-radius: 10px;
     top: 20px;
     right: 20px;
     background: none;
-    border: none;
+    border: 20px;
     color: #000;
     cursor: pointer;
   }
@@ -35,7 +35,7 @@
   .card {
     background-color: #f8f9fa;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
@@ -57,7 +57,7 @@
     background-color: #007bff;
     color: white;
   }
-
+  
   .displayButton {
     width: 100%;
     padding: 0.5rem;
@@ -75,5 +75,3 @@
     max-height: 300px;
     overflow-y: auto;
   }
-
-
