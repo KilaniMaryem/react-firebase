@@ -1,0 +1,79 @@
+.App-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    position: relative;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .mailDiv {
+    width: 300px;
+    
+  }
+  
+  .logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .logout-btn:hover {
+    color: #007bff;
+  }
+  
+  .card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .inp {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .button {
+    width: 30%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+  }
+
+  .displayButton {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .users-list {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+
