@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { app, database, storage } from './firebaseConfig';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -61,15 +61,15 @@ function App() {
     signOut(auth);
   };
 
-  const fetchData = async () => {
-    try {
-      const querySnapshot = await getDocs(collectionRef);
-      setUsers(querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-      setShowUsers(true);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const querySnapshot = await getDocs(collectionRef);
+  //     setUsers(querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+  //     setShowUsers(true);
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // };
 
   const deleteUser = async (userId) => {
     try {
@@ -81,7 +81,16 @@ function App() {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (data) => setIsLoggedIn(!!data));
+    const unsubscribe = onSnapshot(collectionRef, (querySnapshot) => {
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setUsers(data);
+      setShowUsers(true);
+    });
+  
+    return () => unsubscribe(); 
   }, []);
 
   return (
@@ -129,7 +138,7 @@ function App() {
             <div className="card rounded shadow bg-light">
               <div className="card-body text-center">
                 <h2 className="card-title">Users</h2>
-                <button className="button btn btn-dark mb-4" onClick={fetchData}>Display Users</button>
+                {/* <button className="button btn btn-dark mb-4" onClick={fetchData}>Display Users</button> */}
                 {showUsers && (
                   <div className="users-list">
                     {users.map((user) => (
